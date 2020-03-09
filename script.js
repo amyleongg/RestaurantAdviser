@@ -6,23 +6,6 @@ var googlemapsURL= "https://cors-anywhere.herokuapp.com/https://maps.googleapis.
 
 var googlezURL= "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/staticmap?center=63.259591,-144.667969&zoom=6&size=400x400&markers=color:blue%7Clabel:S%7C62.107733,-145.541936&markers=size:tiny%7Ccolor:green%7CDelta+Junction,AK&markers=size:mid%7Ccolor:0xFFFF00%7Clabel:C%7CTok,AK&key=AIzaSyCUZ7fTICyveg5p7CbRPEO1glBi2fT6qOU";
 
-// $.ajax({
-//     url: queryURL,
-//     method: "GET",
-//     headers: {
-//         "accept": "application/json",
-//         "x-requested-with": "xmlhttprequest",
-//         "Access-Control-Allow-Origin":"*",
-//         "Authorization": `Bearer ${apiKey}`
-//     }
-// }).then(function(res) {
-//     var OReq.setRequestHeader('Access-Control-Allow-Origin', '*').
-// OReq.open("GET", "/search?location=" + this.loc);
-// OReq.send();
-//
-// results = res.data
-// console.log(results);
-// });
 
 let request = (url, callback) => {
     var OReq= new XMLHttpRequest();
@@ -38,19 +21,7 @@ let request = (url, callback) => {
     OReq.send();
 }
 
-//request(queryURL + "?location=sydney&limit=10", function(response) {
-//    console.log("sydney data: ", response);
-//});
 
-//request(queryURL + "?location=nyc", function(response) {
-//    console.log("nyc data: ", response);
-//});
-
-// btn.addEventListener("click",)
-//
-// giveCuisineData: function () {
-//
-// }
 
 let userLocation = {
     lat: 0,
@@ -65,36 +36,6 @@ navigator.geolocation.getCurrentPosition(x=>{
 }, err=>console.error(err));
 
 
-
-//for(let btn of document.querySelectorAll('.btn')) {
-//    console.log(btn);
-//    btn.addEventListener('click',  function() {
-//        request(queryURL + "&latitude=" + userLocation.lat + "&longitude=" + userLocation.long, (response) => {
-//            this.results = response.businesses;
-//        });
-//    });
-
-//}
-
-Vue.component("cuisine-component", {
-    data: function() {
-        return {
-            cuisineType: "",
-            cuisineTypes: ["Chinese", "Greek", "Other"]
-        }
-    },
-    methods: {
-        test() {
-            console.log('hi');
-        }
-    },
-    template: `
-<div>
-    <button v-for="currentCuisine of cuisineTypes" @click="cuisineType=currentCuisine">{{currentCuisine}}</button>
-    {{ cuisineType }}
-     <button @click="test()">add lactose free</button>
-</div>`
-});
 
 Vue.component("result-component", {
     data: function() {
@@ -114,17 +55,14 @@ Vue.component("result-component", {
             url= googlemapsURL + "size=400x400&markers=color:red|" + this.organization.coordinates.latitude + "," + this.organization.coordinates.longitude + "&key=" + googlemapsapiKey;
             return url;
 
-         //   url = `${googlemapsURL}marers=color:red|${organization.coordinates.latitude}`
+
         },
 
         googlemapsPositions: function (restlatitude, restlongitude) {
             request(googlezURL,(response) => {
 
 
-        //    request(googlemapsURL + "markers=color:red" + "|" + restlatitude + "," + restlongitude + "&key=" + googlemapsapiKey, (response) => {
-                //   this.results = response.businesses;
-                //   console.log(response);
-                //   this.cuisineChosen= true;
+
                 console.log(response);
             });
         },
@@ -158,21 +96,16 @@ Vue.component("results-component", {
 
         btnresults: function (foodtype) {
 
-       //     for(let btn of document.querySelectorAll('.btn')) {
-            //    console.log(btn);
+
                     request(queryURL + "?latitude=" + userLocation.lat + "&longitude=" + userLocation.long + "&term=" +foodtype, (response) => {
                         this.results = response.businesses;
                         console.log(response);
                         this.cuisineChosen= true;
                     });
 
-         //   }
         },
 
 
-        doSomething: function() {
-            this.results.push({name: 'bca', president: 'paul mac'});
-        },
         callApi: function() {
             request(queryURL + "?price=3&latitude=" + userLocation.lat + "&longitude=" + userLocation.long, (response) => {
                 this.results = response.businesses;
@@ -203,11 +136,9 @@ Vue.component("results-component", {
 let vc = new Vue({
     el: "#app",
     data: {
-        helloworld: 'hello world'
+
     },
     methods: {
-        testalert: function() {
-            alert(this.helloworld);
-        }
+
     }
 });

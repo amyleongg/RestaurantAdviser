@@ -88,7 +88,7 @@ Vue.component("results-component", {
             results: [],
             loc: "chicago",
             cuisineChosen: false,
-            buttons : [{ name: 'American Food', url: 'americanfood', cuisineType: 'American Food' }, { name: 'Chinese Food', url: 'chinesefood.jpg', cuisineType: 'Chinese Food' },{ name: 'Desserts (Treat Yourself!)', url: 'dessert.jpg', cuisineType: 'dessert' }, { name: 'Fast Food', url: 'fastfood.jpg',cuisineType: 'Fast Food' }, { name: 'French Food', url: 'frenchfood.jpg', cuisineType: 'French Food' }, { name: 'Greek Food', url: 'greekfood.jpg', cuisineType: 'Greek Food' }, { name: 'Italian Food', url: 'italianfood.jpg', cuisineType:'Italian Food' }, { name: 'Mexican Food', url: 'mexicanfood.png', cuisineType: 'Mexican Food'} ,{ name: 'General', url: 'general.png', cuisineType: 'Food'}  ]
+            buttons : [{ name: 'American Food', url: 'americanfood', cuisineType: 'American Food' }, { name: 'Chinese Food', url: 'chinesefood.jpg', cuisineType: 'Chinese Food' },{ name: 'Desserts (Treat Yourself!)', url: 'dessert.jpg', cuisineType: 'dessert' },{ name: 'Drinks', url: 'drinks.jpg', cuisineType: 'drinks' }, { name: 'Fast Food', url: 'fastfood.jpg',cuisineType: 'Fast Food' }, { name: 'French Food', url: 'frenchfood.jpg', cuisineType: 'French Food' }, { name: 'Greek Food', url: 'greekfood.jpg', cuisineType: 'Greek Food' }, { name: 'Italian Food', url: 'italianfood.jpg', cuisineType:'Italian Food' }, { name: 'Mexican Food', url: 'mexicanfood.png', cuisineType: 'Mexican Food'} ,{ name: 'Seafood', url: 'seafood.jpeg', cuisineType: 'seafood' },{ name: 'Vegetarian', url: 'vegetarian.jpg', cuisineType: 'vegetarian' },{ name: 'General (It is ok to be indecisive!)', url: 'general.png', cuisineType: 'Food'}  ]
         };
         return dataMembers;
     },
@@ -105,13 +105,6 @@ Vue.component("results-component", {
 
         },
 
-
-        callApi: function() {
-            request(queryURL + "?price=3&latitude=" + userLocation.lat + "&longitude=" + userLocation.long, (response) => {
-                this.results = response.businesses;
-                console.log('testing', response);
-            });
-        }
     },
     template: `
 <div>
